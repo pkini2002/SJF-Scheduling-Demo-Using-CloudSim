@@ -1,3 +1,20 @@
+## Software Versions used in the project
+
+- Cloud Sim Version - `3.0.3`
+- Commons Math Version - `3-3.6.1`
+- IDE Used - `Eclipse`
+
+**Note:**
+
+Make sure to change the JDK version of your Eclipse IDE. The JDK Version used in this project is `JDK-9`. This can be done by right clicking on the project folder and then clicking on Java Compiler -> Check Enable Project Specific settings -> Select JDK Version to 9.
+
+
+## Some Useful links:
+
+- <a href="https://github.com/Cloudslab/cloudsim/releases/tag/cloudsim-3.0.3">Cloudsim Installation</a>
+- <a href="https://archive.apache.org/dist/commons/math/binaries/">Commons-Math</a>
+
+
 Table of Contents
 -----------------
 
