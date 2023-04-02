@@ -6,6 +6,12 @@ consideration of maximizing resource utilization. Our aim is to reduce the total
 the loads between the virtual machines and use the best algorithm to execute the tasks with taking into 
 consideration maximizing the resource utilization and reducing the completion time.
 
+This project aims to implement the improved shortest job first scheduling algorithm in cloud computing. 
+The already existing shortest job first (SJF) algorithm doesn’t utilize resources efficiently and has higher 
+makespan and lower response time. In a scheduling algorithm, the most important parameters to be 
+considered are makespan and response time. Therefore, we have implemented the improved SJF 
+algorithm which maximizes the resource usage and efficiency, as well as minimize the completion time 
+of the last task (Makespan) and the average response time.
 
 
 ## Software Requirements
@@ -24,7 +30,7 @@ consideration maximizing the resource utilization and reducing the completion ti
 
 **Note:**
 
-Make sure to change the JDK version of your Eclipse IDE. The JDK Version used in this project is `JDK-9`. This can be done by right clicking on the project folder and then clicking on Java Compiler -> Check Enable Project Specific settings -> Select JDK Version to 9.
+Make sure to change the JDK version of your Eclipse IDE. The JDK Version used in this project is `JDK-9`. This can be done by right clicking on the project folder and then clicking on Properties -> Java Compiler -> Check Enable Project Specific settings -> Select JDK Version to 9.
 
 
 ## Some Useful links:
