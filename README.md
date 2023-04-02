@@ -13,6 +13,19 @@ considered are makespan and response time. Therefore, we have implemented the im
 algorithm which maximizes the resource usage and efficiency, as well as minimize the completion time 
 of the last task (Makespan) and the average response time.
 
+## Steps to run the project
+
+- Open the project in the Eclipse IDE
+- Open the examples folder of the project and navigate to `org.cloudbus.cloudsim.examples` and Open the `Simulation.java` file
+- Right click on Simulation.java file and then click on Run as 1 Java application. You can then view the creation of datacenter and task scheduling jobs being performed in the console
+
+*Note: If you encounter a launch error 'Main type not found' error then close your project and reopen it and try running the Simulation.java file*
+*All other files present in examples folder are demo files representing different tasks and are not a part of our project. Feel free to delete them if you feel the project structure as complex*
+
+> For those creating the project from start the following changes needs to be made in the cloudsim setup code
+
+- Replace the DataCenterBroker.java code with the one used in the project. The default code provided by cloudsim is of FCFS Task Scheduling
+- Create a new Java class called `Simulation.java` in examples folder and paste the code from the above respective folder 
 
 ## Software Requirements
 
@@ -20,7 +33,7 @@ of the last task (Makespan) and the average response time.
 - Operating System - Windows/ Linux/ Mac OS
 - Commons Math Version - `3-3.6.1`
 - IDE Used - `Eclipse`
-- JDK Version - `9`
+- JDK Version - `18` (JDK Version 9 or higher would suffice)
 
 ## Hardware Requirements
 
@@ -92,5 +105,9 @@ createCloudlet()
  ```bash
  printCloudletList()
  ```
+ 
+ ## Research Papers
+ 
+ <a href="https://drive.google.com/file/d/1AfgsvYRY4qcDOg4cDuomknws3fipN5mU/view?usp=sharing">Research Paper on Modified SJF Scheduling Algorithm </a>
 
 
