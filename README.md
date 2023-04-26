@@ -20,6 +20,8 @@ of the last task (Makespan) and the average response time.
 - Right click on Simulation.java file and then click on Run as 1 Java application. You can then view the creation of datacenter and task scheduling jobs being performed in the console
 
 *Note: If you encounter a launch error 'Main type not found' error then close your project and reopen it and try running the Simulation.java file*
+*Or if you encounter some errors in files related to Common Math Library such as Math Utils file try to change JDK version to 1.8 build the project you
+will encounter an error in ModuleInfo.java file then again change the JDK Version to 9 and build the project. Now you are good to go and run your project without any errors!*
 *All other files present in examples folder are demo files representing different tasks and are not a part of our project. Feel free to delete them if you feel the project structure as complex*
 
 > For those creating the project from start the following changes needs to be made in the cloudsim setup code
