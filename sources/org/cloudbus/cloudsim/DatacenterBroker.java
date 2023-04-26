@@ -1,11 +1,3 @@
-/*
- * Title:        CloudSim Toolkit
- * Description:  CloudSim (Cloud Simulation) Toolkit for Modeling and Simulation of Clouds
- * Licence:      GPL - http://www.gnu.org/copyleft/gpl.html
- *
- * Copyright (c) 2009-2012, The University of Melbourne, Australia
- */
-
 package org.cloudbus.cloudsim;
 
 import java.util.ArrayList;
@@ -21,14 +13,7 @@ import org.cloudbus.cloudsim.core.SimEvent;
 import org.cloudbus.cloudsim.lists.CloudletList;
 import org.cloudbus.cloudsim.lists.VmList;
 
-/**
- * DatacentreBroker represents a broker acting on behalf of a user. It hides VM management, as vm
- * creation, sumbission of cloudlets to this VMs and destruction of VMs.
- * 
- * @author Rodrigo N. Calheiros
- * @author Anton Beloglazov
- * @since CloudSim Toolkit 1.0
- */
+
 public class DatacenterBroker extends SimEntity {
 
 	/** The vm list. */
@@ -339,9 +324,52 @@ public class DatacenterBroker extends SimEntity {
 	 * @post $none
 	 */
 	protected void submitCloudlets() {
+		
 		int vmIndex = 0;
-		for (Cloudlet cloudlet : getCloudletList()) {
-			Vm vm;
+		float avgCloudletLength;
+		//Maintains a Sorted List According to the Cloudlet length
+		List <Cloudlet> sortList= new ArrayList<Cloudlet>();
+		ArrayList<Cloudlet> tempList = new ArrayList<Cloudlet>();
+		
+		for(Cloudlet cloudlet: getCloudletList())
+		{
+			tempList.add(cloudlet);
+		}
+		//Selection Sort
+		int totalCloudlets= tempList.size();
+		for(int i=0;i<totalCloudlets;i++)
+		{
+	
+			Cloudlet smallestCloudlet= tempList.get(0);
+			for(Cloudlet checkCloudlet: tempList)
+			{
+				if(smallestCloudlet.getCloudletLength()>checkCloudlet.getCloudletLength())
+				{
+					smallestCloudlet= checkCloudlet;
+				}
+			}
+			sortList.add(smallestCloudlet);
+			tempList.remove(smallestCloudlet);
+				
+		}
+		//get the average of cloudlet lengths
+		int sumOfLengths=0;
+		for(Cloudlet templet: sortList)
+		{
+			sumOfLengths += templet.getCloudletLength();
+		}
+		avgCloudletLength = sumOfLengths/totalCloudlets;
+		//Print the Sorted Cloudlets
+		int count=1;
+		for(Cloudlet printCloudlet: sortList)
+		{
+			Log.printLine(count+".Cloudler Id:"+printCloudlet.getCloudletId()+",Cloudlet Length:"+printCloudlet.getCloudletLength());
+		    count++;
+		}
+		
+		//FCFS Scheduling of Sorted List of Cloudlets
+		for (Cloudlet cloudlet : sortList) {
+			Vm vm,vm1,vm2;
 			// if user didn't bind this cloudlet and it has not been executed yet
 			if (cloudlet.getVmId() == -1) {
 				vm = getVmsCreatedList().get(vmIndex);
@@ -353,12 +381,54 @@ public class DatacenterBroker extends SimEntity {
 					continue;
 				}
 			}
-
+			//Implementing Modified SJF from the paper
+			vm1 = getVmsCreatedList().get(0);
+			vm2 = getVmsCreatedList().get(1);
+			int noOfCloudletsOfVm1=0, noOfCloudletsOfVm2=0;
+			//count no. of cloudlets in a vm using cloudlet's vm id
+			for(Cloudlet templet : sortList)
+			{
+				//if a cloudlet only belongs to one of the two vms
+				if(templet.getVmId() != -1)
+				{
+					//get the current cloudlet's vm
+					Vm tempvm = getVmsCreatedList().get(templet.getVmId());
+					if(tempvm.equals(vm1))
+					{
+						noOfCloudletsOfVm1++;
+					}
+					else
+					{
+						noOfCloudletsOfVm2++;
+					}
+				}
+			}
+			//For each task if the task length < average length and if no. of task in vm1 < no. of task in vm2
+			if(cloudlet.getCloudletLength() < avgCloudletLength && noOfCloudletsOfVm1 < noOfCloudletsOfVm2)
+			{
+				//pass the task to vm1 (less computing power)
+				Log.printLine(CloudSim.clock() + ": " + getName() + ": Sending cloudlet "
+						+ cloudlet.getCloudletId() + " to VM #" + vm1.getId());
+				cloudlet.setVmId(vm1.getId());
+				sendNow(getVmsToDatacentersMap().get(vm1.getId()), CloudSimTags.CLOUDLET_SUBMIT, cloudlet);
+				cloudletsSubmitted++;
+			}
+			else
+			{
+				//pass the task to vm2 (more computing power)
+				Log.printLine(CloudSim.clock() + ": " + getName() + ": Sending cloudlet "
+						+ cloudlet.getCloudletId() + " to VM #" + vm2.getId());
+				cloudlet.setVmId(vm2.getId());
+				sendNow(getVmsToDatacentersMap().get(vm2.getId()), CloudSimTags.CLOUDLET_SUBMIT, cloudlet);
+				cloudletsSubmitted++;
+			}
+			/* 
 			Log.printLine(CloudSim.clock() + ": " + getName() + ": Sending cloudlet "
 					+ cloudlet.getCloudletId() + " to VM #" + vm.getId());
 			cloudlet.setVmId(vm.getId());
 			sendNow(getVmsToDatacentersMap().get(vm.getId()), CloudSimTags.CLOUDLET_SUBMIT, cloudlet);
 			cloudletsSubmitted++;
+			*/
 			vmIndex = (vmIndex + 1) % getVmsCreatedList().size();
 			getCloudletSubmittedList().add(cloudlet);
 		}
