@@ -5,5 +5,5 @@
  * @author HP
  *
  */
-module cloudsimproject {
+module ModifiedSJFScheduling {
 }
