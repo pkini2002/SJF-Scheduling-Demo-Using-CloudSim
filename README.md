@@ -456,3 +456,9 @@ Average Response Time of VM-2 : 94.84
 
 We implemented a modified SJF algorithm and compared the result with traditional SJF and FCFS algorithms. The results were compared by running the simulation thrice each time varying the number of cloudlets and the average response time for each VMs
 
+![1](https://user-images.githubusercontent.com/84091455/236486281-46b7b2b3-fec2-40d2-a002-6458ff295588.png)
+<br/><br/>
+![2](https://user-images.githubusercontent.com/84091455/236486300-ce64bdea-23d3-4ce1-aec3-4defc32d21b6.png)
+<br/><br/>
+![3](https://user-images.githubusercontent.com/84091455/236486325-31e6003b-8010-4210-89e6-230256ed222c.png)
+
