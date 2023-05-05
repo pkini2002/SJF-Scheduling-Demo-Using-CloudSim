@@ -383,5 +383,76 @@ Average Response Time of VM-1 : 255.64835
 Average Response Time of VM-2 : 171.24646
 SJF Task scheduling finished!
  ```
+ 
+ **Modified SJF Scheduling**
 
+*For 20 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 55.649128
+Average Response Time of VM-2 : 31.630468
+```
+
+*For 40 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 141.89896
+Average Response Time of VM-2 : 88.260895
+```
+
+*For 60 Cloudlets*
+```bash
+Average Response Time of VM-1 : 255.64835
+Average Response Time of VM-2 : 171.24646
+```
+
+**SJF Scheduling**
+
+*For 20 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 141.54948
+Average Response Time of VM-2 : 20.39375
+```
+
+*For 40 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 391.54913
+Average Response Time of VM-2 : 53.64375
+```
+
+*For 60 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 751.54865
+Average Response Time of VM-2 : 100.64375
+```
+
+**FCFS Scheduling algorithm**
+
+*For 20 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 156.02 
+Average Response Time of VM-2 : 18.59
+```
+
+*For 40 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 422.03
+Average Response Time of VM-2 : 49.84
+```
+
+*For 60 Cloudlets*
+
+```bash
+Average Response Time of VM-1 : 798.03
+Average Response Time of VM-2 : 94.84
+```
+
+## Result and final Conclusion
+
+We implemented a modified SJF algorithm and compared the result with traditional SJF and FCFS algorithms. The results were compared by running the simulation thrice each time varying the number of cloudlets and the average response time for each VMs
 
