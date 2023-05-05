@@ -130,8 +130,9 @@ createCloudlet()
  
  ## Output
  
+ **For Cloudlets=60**
  ```bash
- Starting SJF Simulation...
+Starting Improved SJF Simulation...
 Initialising...
 Starting CloudSim version 3.0
 Datacenter_0 is starting...
@@ -333,71 +334,77 @@ Broker is shutting down...
 Simulation completed.
 Simulation completed.
 
-========== OUTPUT ==========
-Cloudlet ID    STATUS    Data center ID    VM ID        Time    Start Time    Finish Time    user id    
-    0        SUCCESS        2            1            1.31        0.1            1.41    3
-    3        SUCCESS        2            1            2.54        1.41            3.95    3
-    5        SUCCESS        2            1            2.95        3.95            6.9    3
-    7        SUCCESS        2            1            3.36        6.9            10.26    3
-    9        SUCCESS        2            1            3.78        10.26            14.04    3
-    1        SUCCESS        2            0            17        0.1            17.1    3
-    11        SUCCESS        2            1            4.19        14.04            18.22    3
-    13        SUCCESS        2            1            4.6        18.22            22.82    3
-    15        SUCCESS        2            1            5.01        22.82            27.84    3
-    17        SUCCESS        2            1            5.43        27.84            33.26    3
-    19        SUCCESS        2            1            5.84        33.26            39.1    3
-    2        SUCCESS        2            0            23.5        17.1            40.6    3
-    21        SUCCESS        2            1            6.25        39.1            45.35    3
-    23        SUCCESS        2            1            6.66        45.35            52.01    3
-    25        SUCCESS        2            1            7.08        52.01            59.09    3
-    27        SUCCESS        2            1            7.49        59.09            66.58    3
-    4        SUCCESS        2            0            26.8        40.6            67.4    3
-    29        SUCCESS        2            1            7.9        66.58            74.47    3
-    28        SUCCESS        2            1            8.3        74.47            82.77    3
-    31        SUCCESS        2            1            8.31        82.77            91.09    3
-    6        SUCCESS        2            0            30.1        67.4            97.5    3
-    30        SUCCESS        2            1            8.71        91.09            99.8    3
-    33        SUCCESS        2            1            8.72        99.8            108.52    3
-    32        SUCCESS        2            1            9.12        108.52            117.65    3
-    35        SUCCESS        2            1            9.14        117.65            126.79    3
-    8        SUCCESS        2            0            33.4        97.5            130.9    3
-    34        SUCCESS        2            1            9.54        126.79            136.32    3
-    37        SUCCESS        2            1            9.55        136.32            145.88    3
-    36        SUCCESS        2            1            9.95        145.88            155.82    3
-    39        SUCCESS        2            1            9.96        155.82            165.79    3
-    10        SUCCESS        2            0            36.7        130.9            167.6    3
-    38        SUCCESS        2            1            10.36        165.79            176.15    3
-    41        SUCCESS        2            1            10.38        176.15            186.53    3
-    40        SUCCESS        2            1            10.78        186.53            197.3    3
-    12        SUCCESS        2            0            40        167.6            207.6    3
-    43        SUCCESS        2            1            10.79        197.3            208.09    3
-    42        SUCCESS        2            1            11.19        208.09            219.28    3
-    45        SUCCESS        2            1            11.2        219.28            230.47    3
-    44        SUCCESS        2            1            11.6        230.47            242.07    3
-    14        SUCCESS        2            0            43.3        207.6            250.9    3
-    47        SUCCESS        2            1            11.61        242.07            253.69    3
-    46        SUCCESS        2            1            12.01        253.69            265.7    3
-    49        SUCCESS        2            1            12.02        265.7            277.72    3
-    48        SUCCESS        2            1            12.43        277.72            290.15    3
-    16        SUCCESS        2            0            46.6        250.9            297.5    3
-    51        SUCCESS        2            1            12.44        290.15            302.59    3
-    50        SUCCESS        2            1            12.84        302.59            315.42    3
-    53        SUCCESS        2            1            12.85        315.42            328.27    3
-    52        SUCCESS        2            1            13.25        328.27            341.52    3
-    18        SUCCESS        2            0            49.9        297.5            347.4    3
-    55        SUCCESS        2            1            13.26        341.52            354.79    3
-    54        SUCCESS        2            1            13.66        354.79            368.45    3
-    57        SUCCESS        2            1            13.68        368.45            382.12    3
-    56        SUCCESS        2            1            14.07        382.12            396.2    3
-    20        SUCCESS        2            0            53.2        347.4            400.6    3
-    59        SUCCESS        2            1            14.09        396.2            410.29    3
-    58        SUCCESS        2            1            14.49        410.29            424.78    3
-    22        SUCCESS        2            0            56.5        400.6            457.1    3
-    24        SUCCESS        2            0            59.8        457.1            516.9    3
-    26        SUCCESS        2            0            63.1        516.9            580    3
-Average Response Time of VM-1 : 255.64835
-Average Response Time of VM-2 : 171.24646
-SJF Task scheduling finished!
+======================================================================OUTPUT============================================================================================================================
+Cloudlet ID    	STATUS    Data center ID    VM ID        Time        Start Time    Finish Time    user id    
+    0        	SUCCESS        2            1            1.31        0.1            1.41            3
+    3        	SUCCESS        2            1            2.54        1.41            3.95            3
+    5        	SUCCESS        2            1            2.95        3.95            6.9            3
+    7        	SUCCESS        2            1            3.36        6.9            10.26            3
+    9        	SUCCESS        2            1            3.78        10.26            14.04            3
+    1        	SUCCESS        2            0            17        0.1            17.1            3
+    11        	SUCCESS        2            1            4.19        14.04            18.22            3
+    13        	SUCCESS        2            1            4.6        18.22            22.82            3
+    15        	SUCCESS        2            1            5.01        22.82            27.84            3
+    17        	SUCCESS        2            1            5.43        27.84            33.26            3
+    19        	SUCCESS        2            1            5.84        33.26            39.1            3
+    2        	SUCCESS        2            0            23.5        17.1            40.6            3
+    21        	SUCCESS        2            1            6.25        39.1            45.35            3
+    23        	SUCCESS        2            1            6.66        45.35            52.01            3
+    25        	SUCCESS        2            1            7.08        52.01            59.09            3
+    27        	SUCCESS        2            1            7.49        59.09            66.58            3
+    4        	SUCCESS        2            0            26.8        40.6            67.4            3
+    29        	SUCCESS        2            1            7.9        66.58            74.47            3
+    28        	SUCCESS        2            1            8.3        74.47            82.77            3
+    31        	SUCCESS        2            1            8.31        82.77            91.09            3
+    6        	SUCCESS        2            0            30.1        67.4            97.5            3
+    30        	SUCCESS        2            1            8.71        91.09            99.8            3
+    33        	SUCCESS        2            1            8.72        99.8            108.52            3
+    32        	SUCCESS        2            1            9.12        108.52            117.65            3
+    35        	SUCCESS        2            1            9.14        117.65            126.79            3
+    8        	SUCCESS        2            0            33.4        97.5            130.9            3
+    34        	SUCCESS        2            1            9.54        126.79            136.32            3
+    37        	SUCCESS        2            1            9.55        136.32            145.88            3
+    36        	SUCCESS        2            1            9.95        145.88            155.82            3
+    39        	SUCCESS        2            1            9.96        155.82            165.79            3
+    10        	SUCCESS        2            0            36.7        130.9            167.6            3
+    38        	SUCCESS        2            1            10.36        165.79            176.15            3
+    41        	SUCCESS        2            1            10.38        176.15            186.53            3
+    40        	SUCCESS        2            1            10.78        186.53            197.3            3
+    12        	SUCCESS        2            0            40        167.6            207.6            3
+    43        	SUCCESS        2            1            10.79        197.3            208.09            3
+    42        	SUCCESS        2            1            11.19        208.09            219.28            3
+    45        	SUCCESS        2            1            11.2        219.28            230.47            3
+    44        	SUCCESS        2            1            11.6        230.47            242.07            3
+    14        	SUCCESS        2            0            43.3        207.6            250.9            3
+    47        	SUCCESS        2            1            11.61        242.07            253.69            3
+    46        	SUCCESS        2            1            12.01        253.69            265.7            3
+    49        	SUCCESS        2            1            12.02        265.7            277.72            3
+    48        	SUCCESS        2            1            12.43        277.72            290.15            3
+    16        	SUCCESS        2            0            46.6        250.9            297.5            3
+    51        	SUCCESS        2            1            12.44        290.15            302.59            3
+    50        	SUCCESS        2            1            12.84        302.59            315.42            3
+    53        	SUCCESS        2            1            12.85        315.42            328.27            3
+    52        	SUCCESS        2            1            13.25        328.27            341.52            3
+    18        	SUCCESS        2            0            49.9        297.5            347.4            3
+    55        	SUCCESS        2            1            13.26        341.52            354.79            3
+    54        	SUCCESS        2            1            13.66        354.79            368.45            3
+    57        	SUCCESS        2            1            13.68        368.45            382.12            3
+    56        	SUCCESS        2            1            14.07        382.12            396.2            3
+    20        	SUCCESS        2            0            53.2        347.4            400.6            3
+    59        	SUCCESS        2            1            14.09        396.2            410.29            3
+    58        	SUCCESS        2            1            14.49        410.29            424.78            3
+    22        	SUCCESS        2            0            56.5        400.6            457.1            3
+    24        	SUCCESS        2            0            59.8        457.1            516.9            3
+    26        	SUCCESS        2            0            63.1        516.9            580            3
+======================================================================================================================================================================================================================================
+Average Response Time of VM-0:255.64835
+The Makespan of VM-0:579.898
+VM0 Count:14
+
+Average Response Time of VM-1:171.24646
+Makespan of VM-1:424.675
+VM1 Count:46
+=================MSJF Task scheduling finished!=====================================
  ```
  
  **Modified SJF Scheduling**
@@ -405,21 +412,27 @@ SJF Task scheduling finished!
 *For 20 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 55.649128
-Average Response Time of VM-2 : 31.630468
+Average Response Time of VM-0 : 55.649128
+Average Response Time of VM-1 : 31.630468
+Makespan for VM-0 : 97.3985 
+Makespan for VM-1 : 70.2375 
 ```
 
 *For 40 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 141.89896
-Average Response Time of VM-2 : 88.260895
+Average Response Time of VM-0 : 141.89896
+Average Response Time of VM-1 : 88.260895
+Makespan for VM-0 : 297.3985 
+Makespan for VM-1 : 211.36249
 ```
 
 *For 60 Cloudlets*
 ```bash
 Average Response Time of VM-1 : 255.64835
 Average Response Time of VM-2 : 171.24646
+Makespan for VM-0 : 579.898
+Makespan for VM-1 : 424.675
 ```
 
 **SJF Scheduling**
@@ -427,22 +440,28 @@ Average Response Time of VM-2 : 171.24646
 *For 20 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 141.54948
-Average Response Time of VM-2 : 20.39375
+Average Response Time of VM-0 : 141.54948
+Average Response Time of VM-1 : 20.39375
+Makespan for VM-0 : 312.1
+Makespan for VM-1 : 43.51
 ```
 
 *For 40 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 391.54913
-Average Response Time of VM-2 : 53.64375
+Average Response Time of VM-0 : 391.54913
+Average Response Time of VM-1 : 53.64375
+Makespan for VM-0 : 960.6
+Makespan for VM-1 : 128.57
 ```
 
 *For 60 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 751.54865
-Average Response Time of VM-2 : 100.64375
+Average Response Time of VM-0 : 751.54865
+Average Response Time of VM-1 : 100.64375
+Makespan for VM-0 : 1939.1
+Makespan for VM-1 : 254.89
 ```
 
 **FCFS Scheduling algorithm**
@@ -450,22 +469,28 @@ Average Response Time of VM-2 : 100.64375
 *For 20 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 156.02 
-Average Response Time of VM-2 : 18.59
+Average Response Time of VM-0 : 156.02 
+Average Response Time of VM-1 : 18.59
+Makespan for VM-0 : 340.98
+Makespan for VM-1 : 39.91
 ```
 
 *For 40 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 422.03
-Average Response Time of VM-2 : 49.84
+Average Response Time of VM-0 : 422.03
+Average Response Time of VM-1 : 49.84
+Makespan for VM-1 : 1021.49
+Makespan for VM-2 : 120.98
 ```
 
 *For 60 Cloudlets*
 
 ```bash
-Average Response Time of VM-1 : 798.03
-Average Response Time of VM-2 : 94.84
+Average Response Time of VM-0 : 798.03
+Average Response Time of VM-1 : 94.84
+Makespan for VM-0 : 2031.98
+Makespan for VM-1 : 243.29
 ```
 
 ## Result and final Conclusion
