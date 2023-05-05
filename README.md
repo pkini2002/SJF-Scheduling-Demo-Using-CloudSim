@@ -13,6 +13,22 @@ considered are makespan and response time. Therefore, we have implemented the im
 algorithm which maximizes the resource usage and efficiency, as well as minimize the completion time 
 of the last task (Makespan) and the average response time.
 
+## Configurations
+
+In our project we have considered:-
+- 20 Cloudlets
+- 2 Virtual Machines(VM0 & VM1)
+- 1 Host
+- 1 Datacenter
+
+## Calculations
+
+Calculations include:-
+- Average Task Length:- `(sum of all the task length) / (Total number of tasks)`
+- Makespan:-`Maximum Finish time - Minimum Start time`
+- Average response time:- `(Sum of all response times) / (Total number of tasks)`
+
+
 ## Steps to run the project
 
 - Open the project in the Eclipse IDE
@@ -461,4 +477,11 @@ We implemented a modified SJF algorithm and compared the result with traditional
 ![2](https://user-images.githubusercontent.com/84091455/236486300-ce64bdea-23d3-4ce1-aec3-4defc32d21b6.png)
 <br/><br/>
 ![3](https://user-images.githubusercontent.com/84091455/236486325-31e6003b-8010-4210-89e6-230256ed222c.png)
+<br/><br/>
+![4](https://user-images.githubusercontent.com/84091455/236517752-2089bef5-f60b-4890-8765-c593759d6d14.png)
+<br/><br/>
+![5](https://user-images.githubusercontent.com/84091455/236517765-0cb67ed2-aa87-4256-97c5-96ddef6ebfe0.png)
+<br/><br/>
+![6](https://user-images.githubusercontent.com/84091455/236517787-e7fe30d7-f163-4844-b4b6-eb498d9a4d6d.png)
+<br/><br/>
 
