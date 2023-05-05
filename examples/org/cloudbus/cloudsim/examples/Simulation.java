@@ -1,5 +1,4 @@
 package org.cloudbus.cloudsim.examples;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,21 +53,10 @@ public class Simulation {
 
 		//create VMs
 		Vm[] vm = new Vm[vms];
-
-		/*
-		for(int i=0;i<vms;i++){
-			vm[i] = new Vm(i, userId, mips, pesNumber, ram, bw, size, vmm, new CloudletSchedulerSpaceShared());
-			//for creating a VM with a space shared scheduling policy for cloudlets:
-			//vm[i] = Vm(i, userId, mips, pesNumber, ram, bw, size, vmm, new CloudletSchedulerSpaceShared());
-			list.add(vm[i]);
-		}
-		*/
 		vm[0] = new Vm(0,userId,1000,pesNumber,ram,bw,size,vmm,new CloudletSchedulerSpaceShared());
 		vm[1] = new Vm(1,userId,8000,pesNumber,ram,bw,size,vmm,new CloudletSchedulerSpaceShared());
-		//vm[2] = new Vm(2,userId,8000,pesNumber,ram,bw,size,vmm,new CloudletSchedulerSpaceShared());
 		list.add(vm[0]);
 		list.add(vm[1]);
-		//list.add(vm[2]);
 		return list;
 	}
 
@@ -86,9 +74,9 @@ public class Simulation {
 
 		Cloudlet[] cloudlet = new Cloudlet[cloudlets];
 
+		// if cloudlet length is more than the avg cloudlet length and if VM0 has lower config then VM1 then that particular VM gets higher 
+		// configuration is the goal of modified SJF
 		for(int i=0;i<cloudlets;i++){
-			//Random r= new Random();
-			//length +r.nextInt(2000)
 			if(i % 2 == 0 || i < 2)
 				length+=6500;
 			else
@@ -109,7 +97,7 @@ public class Simulation {
 	 * Creates main() to run this example
 	 */
 	public static void main(String[] args) {
-		Log.printLine("Starting SJF Simulation...");
+		Log.printLine("Starting Improved SJF Simulation...");
 
 		try {
 			// First step: Initialize the CloudSim package. It should be called
@@ -124,15 +112,14 @@ public class Simulation {
 			// Second step: Create Datacenters
 			//Datacenters are the resource providers in CloudSim. We need at list one of them to run a CloudSim simulation
 			Datacenter datacenter0 = createDatacenter("Datacenter_0");
-			//Datacenter datacenter1 = createDatacenter("Datacenter_1");
-
+	
 			//Third step: Create Broker
 			DatacenterBroker broker = createBroker();
 			int brokerId = broker.getId();
 
 			//Fourth step: Create VMs and Cloudlets and send them to broker
 			vmlist = createVM(brokerId,2); //creating 2 vms
-			cloudletList = createCloudlet(brokerId,60); // creating 20 cloudlets
+			cloudletList = createCloudlet(brokerId,20); // creating 20 cloudlets
 
 			broker.submitVmList(vmlist);
 			broker.submitCloudletList(cloudletList);
@@ -151,7 +138,7 @@ public class Simulation {
 			//datacenter0.printDebts();
 			//datacenter1.printDebts();
 
-			Log.printLine("SJF Task scheduling finished!");
+			Log.printLine("=================MSJF Task scheduling finished!=====================================");
 		}
 		catch (Exception e)
 		{
@@ -203,44 +190,7 @@ public class Simulation {
     				new VmSchedulerTimeShared(peList1)
     			)
     		); // This is our first machine
-		/*
-		hostId++;
-		hostList.add(
-    			new Host(
-    				hostId,
-    				new RamProvisionerSimple(ram),
-    				new BwProvisionerSimple(bw),
-    				storage,
-    				peList2,
-    				new VmSchedulerTimeShared(peList2)
-    			)
-    		); // Second machine
-		*/
-		//To create a host with a space-shared allocation policy for PEs to VMs:
-		//hostList.add(
-    	//		new Host(
-    	//			hostId,
-    	//			new CpuProvisionerSimple(peList1),
-    	//			new RamProvisionerSimple(ram),
-    	//			new BwProvisionerSimple(bw),
-    	//			storage,
-    	//			new VmSchedulerSpaceShared(peList1)
-    	//		)
-    	//	);
-
-		//To create a host with a oportunistic space-shared allocation policy for PEs to VMs:
-		//hostList.add(
-    	//		new Host(
-    	//			hostId,
-    	//			new CpuProvisionerSimple(peList1),
-    	//			new RamProvisionerSimple(ram),
-    	//			new BwProvisionerSimple(bw),
-    	//			storage,
-    	//			new VmSchedulerOportunisticSpaceShared(peList1)
-    	//		)
-    	//	);
-
-
+		
 		// 5. Create a DatacenterCharacteristics object that stores the
 		//    properties of a data center: architecture, OS, list of
 		//    Machines, allocation policy: time- or space-shared, time zone
@@ -296,9 +246,9 @@ public class Simulation {
 
 		String indent = "    ";
 		Log.printLine();
-		Log.printLine("========== OUTPUT ==========");
-		Log.printLine("Cloudlet ID" + indent + "STATUS" + indent +
-				"Data center ID" + indent + "VM ID" + indent + indent + "Time" + indent + "Start Time" + indent + "Finish Time" +indent+"user id"+indent);
+		Log.printLine("======================================================================OUTPUT============================================================================================================================");
+		Log.printLine("Cloudlet ID" + indent + "\tSTATUS" + indent +
+				"Data center ID" + indent + "VM ID" + indent + indent + "Time" + indent + indent + "Start Time" + indent + "Finish Time" + indent + "user id" + indent);
 
 		DecimalFormat dft = new DecimalFormat("###.##");
 		for (int i = 0; i < size; i++) {
@@ -306,15 +256,14 @@ public class Simulation {
 			Log.print(indent + cloudlet.getCloudletId() + indent + indent);
 
 			if (cloudlet.getCloudletStatus() == Cloudlet.SUCCESS){
-				Log.print("SUCCESS");
+				Log.print("\tSUCCESS");
 
-				Log.printLine( indent + indent + cloudlet.getResourceId() + indent + indent + indent + cloudlet.getVmId() +
-						indent + indent + indent + dft.format(cloudlet.getActualCPUTime()) +
-						indent + indent + dft.format(cloudlet.getExecStartTime())+ indent + indent + indent + dft.format(cloudlet.getFinishTime())+indent +cloudlet.getUserId());
+				Log.printLine( indent + indent + cloudlet.getResourceId() + indent + indent + indent + cloudlet.getVmId() + indent + indent + indent + dft.format(cloudlet.getActualCPUTime()) + indent + indent + dft.format(cloudlet.getExecStartTime()) + indent + indent + indent + dft.format(cloudlet.getFinishTime())+ indent + indent + indent + cloudlet.getUserId());
 				
 								
 			}
 		}
+		Log.printLine("======================================================================================================================================================================================================================================");
 		
 		int vm1count=0,vm2count=0;
 		Vm vm1,vm2;
@@ -322,6 +271,8 @@ public class Simulation {
 		vm2 = vmlist.get(1);
 		float vm1SumOfCTSB=0, vm2SumOfCTSB=0;
 		float vm1AvgRT=0,vm2AvgRT=0;
+		float[] minStartTime = {Float.MAX_VALUE, Float.MAX_VALUE};
+		float[] maxFinishTime = {0, 0};
 		for(Cloudlet templet: list)
 		{
 			if(templet.getVmId() == vm1.getId())
@@ -329,20 +280,36 @@ public class Simulation {
 				vm1count++;
 				vm1SumOfCTSB += templet.getActualCPUTime();
 				vm1SumOfCTSB += templet.getExecStartTime();
+			
 			}
+		
 			else
 			{
 				vm2count++;
 				vm2SumOfCTSB += templet.getActualCPUTime();
 				vm2SumOfCTSB += templet.getExecStartTime();
 			}
+			int vmId = templet.getVmId();
+			if (templet.getExecStartTime() < minStartTime[vmId]) {
+			    minStartTime[vmId] = (float) templet.getExecStartTime();
+			}
+			if (templet.getFinishTime() > maxFinishTime[vmId]) {
+			    maxFinishTime[vmId] = (float) templet.getFinishTime();
+			}
 		}
+		
 		vm1AvgRT = vm1SumOfCTSB/vm1count;
 		vm2AvgRT = vm2SumOfCTSB/vm2count;
-		
-		Log.print("Average Response Time of VM-1 : "+ vm1AvgRT +"\n");
-		Log.print("Average Response Time of VM-2 : "+ vm2AvgRT +"\n");
-
+		float[] makespan = new float[2];
+		makespan[0] = maxFinishTime[0] - minStartTime[0];
+		makespan[1] = maxFinishTime[1] - minStartTime[1];
+	
+		Log.print("Average Response Time of VM-0:"+ vm1AvgRT +"\n");
+		Log.print("The Makespan of VM-0:" + makespan[0] + "\n");
+		Log.print("VM0 Count:"+vm1count+"\n\n");
+		Log.print("Average Response Time of VM-1:"+ vm2AvgRT +"\n");
+		Log.print("Makespan of VM-1:" + makespan[1] + "\n");
+		Log.print("VM1 Count:"+vm2count+"\n");
 	}
 	
 }
